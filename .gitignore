@@ -1,0 +1,92 @@
+# ---------------------------------------------------------------------------
+# Secrets - never commit. Rotate immediately if one lands here.
+# ---------------------------------------------------------------------------
+.secrets/
+.env
+.env.*
+*api_key*
+*token*
+qiskit-ibm.json
+qiskit_ibm_runtime_config.json
+session.txt
+
+# ---------------------------------------------------------------------------
+# Data and large artifacts - these live in md_qc/ or an external DOI deposit
+# ---------------------------------------------------------------------------
+data/
+archive/
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.chk
+*.molden
+*.pdb
+*.nc
+*.mdcrd
+fci_dump.txt
+count_dict.txt
+layout.npy
+
+# ---------------------------------------------------------------------------
+# Scratch / temp / filesystem accidents
+# The three patterns below are exactly what ewf-geom-opt's .gitignore missed,
+# which is how that repository reached 4.7 GiB. Do not remove them.
+# ---------------------------------------------------------------------------
+.nfs*
+*.tmp
+*.swp
+*scratch*
+sci_converged_wf*
+.count_dict.txt.*
+QUICK_job.out
+QUICK_job.molden
+
+# ---------------------------------------------------------------------------
+# HPC / batch
+# ---------------------------------------------------------------------------
+slurm-*.out
+*.out
+*.err
+*.log
+!examples/**/*.out
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------------------
+# Notebooks / editors / OS
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# LaTeX
+# ---------------------------------------------------------------------------
+*.aux
+*.bbl
+*.blg
+*.synctex.gz

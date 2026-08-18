@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "quantum-aimd: Quantum-Centric Ab Initio Molecular Dynamics with SQD"
+abstract: "Ab initio molecular dynamics driven by sample-based quantum
+  diagonalization (SQD). Couples QUICK/AMBER QM/MM trajectories to PySCF
+  Hamiltonians, LUCJ circuits executed on IBM Quantum hardware, and S-CORE
+  selected-CI energies and gradients."
+
+# TODO before first release - do not publish with placeholders:
+#   - confirm full author list and order with the group
+#   - add ORCIDs only where the author has approved publishing theirs
+#   - replace repository-code with the final URL if transferred to MIQuLab
+#   - add preferred-citation only once real paper metadata exists (no invented DOIs)
+authors:
+  - family-names: Das
+    given-names: Susanta
+    affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44106, United States"
+  # - family-names: Merz
+  #   given-names: Kenneth M.
+  #   name-suffix: Jr.
+  #   affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44106, United States"
+
+repository-code: "https://github.com/isusanta/quantum-aimd"
+license: Apache-2.0
+version: 0.1.0
+date-released: "TODO-set-on-first-release"
+keywords:
+  - quantum-computing
+  - quantum-chemistry
+  - molecular-dynamics
+  - sample-based-quantum-diagonalization
+  - qm-mm

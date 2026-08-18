@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-aimd"
+version = "0.1.0"
+description = "Quantum-centric ab initio molecular dynamics with sample-based quantum diagonalization"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Susanta Das", email = "dass11@ccf.org" },
+]
+keywords = ["quantum", "qiskit", "molecular-dynamics", "sqd", "quantum-chemistry"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Development Status :: 3 - Alpha",
+]
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+
+# Pin to the stack actually validated in production; widen only after CI proves it.
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.10",
+    "pyscf>=2.5",
+    "qiskit>=1.0",
+    "qiskit-ibm-runtime>=0.20",
+    "qiskit-addon-sqd>=0.6",
+    "ffsim>=0.0.40",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+hpc = ["ray>=2.9"]
+dev = ["pytest>=7", "pytest-cov", "ruff", "mypy"]
+
+[project.scripts]
+quantum-aimd = "quantum_aimd.cli:main"
+
+[project.urls]
+# TODO: update all of these at transfer time. i-qmapper still points at its
+# pre-transfer owner because this step was missed there.
+Homepage = "https://github.com/isusanta/quantum-aimd"
+Issues = "https://github.com/isusanta/quantum-aimd/issues"
+Changelog = "https://github.com/isusanta/quantum-aimd/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
