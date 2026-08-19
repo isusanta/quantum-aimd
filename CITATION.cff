@@ -24,7 +24,8 @@ authors:
 repository-code: "https://github.com/isusanta/quantum-aimd"
 license: Apache-2.0
 version: 0.1.0
-date-released: "TODO-set-on-first-release"
+# date-released is intentionally absent: CFF requires a real ISO date and the
+# project has not been released. Add it at the moment of the first tagged release.
 keywords:
   - quantum-computing
   - quantum-chemistry

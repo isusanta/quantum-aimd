@@ -24,21 +24,32 @@ classifiers = [
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 
-# Pin to the stack actually validated in production; widen only after CI proves it.
+# LOWER BOUNDS, not a pinned or validated environment.
+#
+# Anchored on the stack the science actually runs on, recorded in
+# docs/environment-evidence.md (qiskit 2.0.0, qiskit-addon-sqd 0.9.0,
+# ffsim 0.0.49, pyscf 2.8.0, numpy 2.2.4, scipy 1.15.2). Floors are set at the
+# transitive minima of those versions rather than lower, because no lower
+# combination has ever been exercised and declaring one would claim untested
+# compatibility. CI proves only what CI runs.
+#
+# Deliberately NOT declared yet: jax/jaxlib and rustworkx arrive transitively
+# today, and ray is optional. md_qc source imports jax, rustworkx and ray
+# directly, so each must be promoted to a direct dependency at the moment the
+# importing module is migrated - not before.
 dependencies = [
-    "numpy>=1.23",
-    "scipy>=1.10",
-    "pyscf>=2.5",
-    "qiskit>=1.0",
-    "qiskit-ibm-runtime>=0.20",
-    "qiskit-addon-sqd>=0.6",
-    "ffsim>=0.0.40",
+    "numpy>=1.26",
+    "scipy>=1.13.1",
+    "pyscf>=2.7",
+    "qiskit>=1.2",
+    "qiskit-ibm-runtime>=0.37",
+    "qiskit-addon-sqd>=0.9.0",
+    "ffsim>=0.0.49",
     "pyyaml>=6.0",
-    "pydantic>=2.0",
 ]
 
 [project.optional-dependencies]
-hpc = ["ray>=2.9"]
+hpc = ["ray>=2.42"]
 dev = ["pytest>=7", "pytest-cov", "ruff", "mypy"]
 
 [project.scripts]
