@@ -1,0 +1,8 @@
+#!/bin/sh
+# Thin wrapper. Real logic lives in tools/ so CI runs the identical checks:
+# .git/hooks is never cloned and --no-verify exists, so this hook is a
+# convenience, never the only line of defence.
+set -e
+root="$(git rev-parse --show-toplevel)"
+python3 "$root/tools/check_large_files.py" --staged
+python3 "$root/tools/scan_secrets.py" --worktree

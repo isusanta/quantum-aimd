@@ -52,14 +52,15 @@ quantum-aimd --help
 ## Running on IBM Quantum
 
 This project **never accepts, stores, or logs a credential.** It reads only from
-your locally saved Qiskit account:
+the Qiskit account you have already saved locally.
 
-```python
-from qiskit_ibm_runtime import QiskitRuntimeService
-QiskitRuntimeService.save_account(channel="ibm_quantum", token="<your token>")
-```
+Save your account once, yourself, in your own Python session and outside this
+repository, following the current
+[Qiskit IBM Runtime documentation](https://docs.quantum.ibm.com/guides/setup-channel).
+This repository deliberately shows no credential-bearing code sample, so that
+nothing here can be copied into a file and committed by accident.
 
-Run that once, yourself, outside this repository. See `docs/ibm-quantum-setup.md`.
+See `docs/ibm-quantum-setup.md`.
 
 ## Reproducibility
 

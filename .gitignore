@@ -4,6 +4,9 @@
 .secrets/
 .env
 .env.*
+# Safe template with placeholder values only. A real secret must never be
+# committed here. .gitignore is NOT secret scanning - see SECURITY notes.
+!.env.example
 *api_key*
 *token*
 qiskit-ibm.json
@@ -53,7 +56,10 @@ slurm-*.out
 *.out
 *.err
 *.log
+# Narrow, deliberate exceptions: small committed reference outputs used by the
+# offline test suite and the minimal example. Everything else stays ignored.
 !examples/**/*.out
+!tests/fixtures/**/*.out
 
 # ---------------------------------------------------------------------------
 # Python
