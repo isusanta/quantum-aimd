@@ -1,0 +1,86 @@
+# Named exactly "CI" so the MIQuLab branch ruleset can require this check by
+# name, matching the convention used on MIQuLab/ewf-geom-opt.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # Safety checks run first and independently of the Python matrix: they must
+  # not be skipped just because an install failed.
+  safety:
+    name: Repository safety checks
+    runs-on: ubuntu-latest
+    steps:
+      # Third-party actions are pinned to immutable commit SHAs, not mutable
+      # tags. A tag can be repointed at new code; a SHA cannot.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # Full history: a secret removed from the tip is still in old blobs.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Reject oversized blobs anywhere in history
+        # Catches commits made with --no-verify or without the local hook
+        # installed, which .git/hooks alone cannot.
+        run: python3 tools/check_large_files.py --tree
+
+      - name: Scan history for credential-shaped strings
+        # Reports locations only; matched values are never printed.
+        run: python3 tools/scan_secrets.py --history
+
+  test:
+    name: Tests (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Narrow and evidence-based: the floor declared in pyproject.toml, plus
+        # one newer interpreter. Widen only when CI has proved the addition.
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package without the scientific stack
+        # --no-deps deliberately: nothing in the package imports qiskit, pyscf,
+        # ffsim or ray yet. Installing them would test PyPI, not this code.
+        # Drop --no-deps when the first module that needs them is migrated.
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --no-deps -e .
+          python -m pip install pytest ruff cffconvert
+
+      - name: Import the package
+        run: python -c "import quantum_aimd; print(quantum_aimd.__version__)"
+
+      - name: CLI help must exit zero
+        run: quantum-aimd --help
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Format check
+        run: ruff format --check .
+
+      - name: Tests
+        run: pytest -q
+
+      - name: Validate CITATION.cff against the CFF 1.2.0 schema
+        run: cffconvert --validate
+
+# Deliberately absent: any step that contacts IBM Quantum, requires a
+# credential, or needs AMBER, QUICK, HPC resources or large data. CI must stay
+# runnable by any contributor with no entitlements at all.
