@@ -15,11 +15,11 @@ abstract: "Ab initio molecular dynamics driven by sample-based quantum
 authors:
   - family-names: Das
     given-names: Susanta
-    affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44106, United States"
+    affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44195, United States"
   # - family-names: Merz
   #   given-names: Kenneth M.
   #   name-suffix: Jr.
-  #   affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44106, United States"
+  #   affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44195, United States"
 
 repository-code: "https://github.com/isusanta/quantum-aimd"
 license: Apache-2.0

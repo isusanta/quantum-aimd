@@ -23,6 +23,10 @@ versioning follows [Semantic Versioning](https://semver.org/).
   3.11 and 3.12. Actions pinned to commit SHAs.
 - `docs/environment-evidence.md` recording the versions the science actually
   runs on, as evidence rather than a supported matrix.
+- `docs/ibm-quantum-setup.md`, which `README.md` already linked but which did
+  not exist. States the no-credential-in-the-repository contract, the
+  argument-free `QiskitRuntimeService()` call, and that the device name is a
+  parameter rather than a literal.
 
 ### Fixed
 - The previous pre-commit hook stat'ed working-tree files, so a large blob could
@@ -39,9 +43,14 @@ versioning follows [Semantic Versioning](https://semver.org/).
   against PyPI metadata. `pydantic` was declared but imported nowhere; removed.
 - Removed a `save_account` documentation example from `README.md` that carried
   a literal `token="..."` placeholder inviting copy-paste.
+- `README.md` linked `docs/ibm-quantum-setup.md`, which did not exist. Written.
+- The author affiliation in `CITATION.cff` gave ZIP 44106; the manuscript gives
+  44195 in all seven places. Corrected.
 
 ### TODO before first release
 - Rotate the IBM Quantum credential (external, blocking).
 - Confirm copyright holder, Apache-2.0 approval, and IBM-derived provenance.
-- Update `[project.urls]` and `CITATION.cff:repository-code` if transferred.
+- ~~Update `[project.urls]` and `CITATION.cff:repository-code` if transferred.~~
+  Decided 2026-09-21: the repository stays under the personal account, so these
+  URLs are final and the manuscript cites them.
 - Confirm the author list; add `date-released` and tag `v0.1.0`.
