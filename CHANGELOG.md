@@ -23,6 +23,11 @@ versioning follows [Semantic Versioning](https://semver.org/).
   3.11 and 3.12. Actions pinned to commit SHAs.
 - `docs/environment-evidence.md` recording the versions the science actually
   runs on, as evidence rather than a supported matrix.
+- `preferred-citation` in `CITATION.cff` and a citation block in `README.md`,
+  pointing at the preprint this code belongs to: arXiv:2607.28548,
+  DOI 10.48550/arXiv.2607.28548. Title and author order were taken from the
+  arXiv API record and checked against the manuscript and DataCite rather than
+  written by hand.
 - `docs/ibm-quantum-setup.md`, which `README.md` already linked but which did
   not exist. States the no-credential-in-the-repository contract, the
   argument-free `QiskitRuntimeService()` call, and that the device name is a
@@ -54,3 +59,5 @@ versioning follows [Semantic Versioning](https://semver.org/).
   Decided 2026-09-21: the repository stays under the personal account, so these
   URLs are final and the manuscript cites them.
 - Confirm the author list; add `date-released` and tag `v0.1.0`.
+- Replace the `preferred-citation` preprint reference with the journal
+  reference once the paper is published.

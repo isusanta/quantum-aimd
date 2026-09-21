@@ -89,7 +89,15 @@ by this repository. Obtain them independently.
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff).
+If you use this work, cite the paper:
+
+> Das, S.; Bhowmik, S.; Li, Z.; Bazayeva, M.; Kaliakin, D.; Shajan, A.; Merz, K. M., Jr.
+> Quantum Computing Enabled *ab initio* Molecular Dynamics Simulations.
+> arXiv:2607.28548 (2026). <https://arxiv.org/abs/2607.28548>
+
+The preprint is under review; this reference will be updated to the journal version
+once it appears. [CITATION.cff](CITATION.cff) carries the same record in machine-readable
+form, with the paper as `preferred-citation` and this repository as the software entry.
 
 ## License
 

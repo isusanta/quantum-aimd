@@ -11,7 +11,8 @@ abstract: "Ab initio molecular dynamics driven by sample-based quantum
 #   - confirm full author list and order with the group
 #   - add ORCIDs only where the author has approved publishing theirs
 #   - replace repository-code with the final URL if transferred to MIQuLab
-#   - add preferred-citation only once real paper metadata exists (no invented DOIs)
+# preferred-citation added 2026-09-21 from the arXiv record, verified against the
+# arXiv API and DataCite. Update it to the journal version once that exists.
 authors:
   - family-names: Das
     given-names: Susanta
@@ -26,6 +27,32 @@ license: Apache-2.0
 version: 0.1.0
 # date-released is intentionally absent: CFF requires a real ISO date and the
 # project has not been released. Add it at the moment of the first tagged release.
+# Cite the paper, not the software, when referring to the science. Author order
+# and title are taken verbatim from the arXiv record and match the manuscript.
+preferred-citation:
+  type: article
+  title: "Quantum Computing Enabled ab initio Molecular Dynamics Simulations"
+  authors:
+    - family-names: Das
+      given-names: Susanta
+    - family-names: Bhowmik
+      given-names: Subhamoy
+    - family-names: Li
+      given-names: Zhen
+    - family-names: Bazayeva
+      given-names: Milana
+    - family-names: Kaliakin
+      given-names: Danil
+    - family-names: Shajan
+      given-names: Akhil
+    - family-names: Merz
+      given-names: Kenneth M.
+      name-suffix: Jr.
+  year: 2026
+  doi: 10.48550/arXiv.2607.28548
+  url: "https://arxiv.org/abs/2607.28548"
+  notes: "Preprint, arXiv:2607.28548. Under review; replace with the journal reference when published."
+
 keywords:
   - quantum-computing
   - quantum-chemistry
