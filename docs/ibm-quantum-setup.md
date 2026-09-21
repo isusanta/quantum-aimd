@@ -54,7 +54,7 @@ workflow move to another device or another platform:
 
 ```python
 service = QiskitRuntimeService()
-backend = service.backend(name)          # name comes from configuration or the CLI
+backend = service.backend(name)  # name comes from configuration or the CLI
 ```
 
 The classical stages after sampling, configuration recovery, subspace diagonalization,
