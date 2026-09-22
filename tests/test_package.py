@@ -111,5 +111,7 @@ def test_no_module_imports_the_scientific_stack_at_module_level():
     ):
         importlib.import_module(name)
 
-    assert "qiskit" not in sys.modules
-    assert "pyscf" not in sys.modules
+    # numpy and yaml are allowed: the offline tier uses arrays and loads YAML.
+    # Everything heavy must stay unimported until a function asks for it.
+    for heavy in ("qiskit", "qiskit_ibm_runtime", "pyscf", "ffsim", "jax", "rustworkx", "ray"):
+        assert heavy not in sys.modules, f"{heavy} imported at module level"

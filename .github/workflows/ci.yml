@@ -64,7 +64,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install --no-deps -e .
-          python -m pip install pytest ruff cffconvert pyyaml
+          # numpy and pyyaml are installed explicitly: the offline tier genuinely
+          # needs them. quantum_aimd.io.quick returns arrays, and the
+          # configuration loads from YAML. Both are small, pure-install packages,
+          # unlike qiskit, pyscf, ffsim, jax and rustworkx, which stay out so that
+          # this job keeps proving the package imports without them.
+          python -m pip install pytest ruff cffconvert numpy pyyaml
 
       - name: Import the package
         run: python -c "import quantum_aimd; print(quantum_aimd.__version__)"
