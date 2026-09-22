@@ -12,12 +12,11 @@ versioning follows [Semantic Versioning](https://semver.org/).
   one states that no credential, instance identifier or HPC account name may
   appear in a report, since that is the one mistake this project cannot undo for
   a contributor.
-- **Both BibTeX entries in the README**: the paper, as an arXiv `@misc` record
-  with the eprint identifier and DOI, and the software itself. The paper comes
-  first, since that is the reference almost every use calls for.
-- **The full author list on both citations**, in `CITATION.cff` and in the
-  README, matching the paper's authors and order. The software entry previously
-  named the first author alone.
+- **The paper's BibTeX entry in the README**, as an arXiv `@misc` record with
+  the eprint identifier and DOI. The paper is the reference to cite; the
+  machine-readable software record stays in `CITATION.cff`.
+- **The full author list on the software record** in `CITATION.cff`, matching
+  the paper's authors and order. It previously named the first author alone.
 - **README repository layout and source-file tables**, the paper link at the
   top, and a BibTeX entry for citing the software itself alongside the paper.
 - **The workflow itself.** The pipeline that produced the published trajectories
