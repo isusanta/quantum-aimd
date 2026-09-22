@@ -1,0 +1,54 @@
+# Example run configuration for one MD step.
+#
+#   quantum-aimd solve --config configs/examples/run.yaml --step 17
+#
+# Every key is optional except `backend`: this package ships no default device,
+# so the processor a trajectory ran on is recorded here rather than compiled into
+# the source. Replace the placeholder with the device you are entitled to use.
+#
+# No credential belongs in this file, or in any file in this repository. The
+# runtime reads the Qiskit account you saved yourself; see
+# docs/ibm-quantum-setup.md.
+
+backend: REPLACE_WITH_YOUR_DEVICE_NAME
+
+# --- quantum execution -------------------------------------------------------
+shots: 10000                 # per MD step
+dynamical_decoupling: true   # fills idle qubit windows
+twirl_gates: true            # randomizes coherent error into stochastic Pauli noise
+twirl_measurement: false     # applies to operator measurement, not basis sampling
+job_tags: ["production"]
+
+# --- active space ------------------------------------------------------------
+# The published runs used the complete STO-3G manifold of the solute, all
+# electrons active, which is what makes full configuration interaction in this
+# space the exact reference. The values below describe H2O; NH3 is (10e,8o) and
+# CH4 is (10e,9o), with num_atoms 4 and 5 respectively.
+num_orbitals: 7
+num_electrons_a: 5
+num_electrons_b: 5
+num_atoms: 3
+open_shell: false
+spin_sq: 0
+
+# --- LUCJ ansatz -------------------------------------------------------------
+n_reps: 2
+optimization_level: 3
+
+# --- S-CORE and subspace diagonalization -------------------------------------
+score_iterations: 2
+batches: 10
+samples_per_batch: 800       # 200, 400 and 800 were the published batch sizes
+max_davidson_cycles: 200
+ray_num_cpus: 10             # one batch per CPU; PySCF is single-threaded here
+
+# --- files exchanged with QUICK and sander -----------------------------------
+# These are the names the MD driver uses, so they rarely need changing.
+quick_out: QUICK_job.out
+quick_molden: QUICK_job.molden
+quick_out_modified: QUICK_job_PySCF_modified.out
+fcidump: fci_dump.txt
+layout: layout.npy
+counts: count_dict.txt
+session_file: session.txt
+results_dir: results

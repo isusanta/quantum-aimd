@@ -43,11 +43,40 @@ pip install -e ".[dev]"
 
 ## Quickstart (no IBM account needed)
 
-<!-- TODO: fill in once examples/minimal/ exists -->
-
 ```bash
 quantum-aimd --help
+python examples/minimal/round_trip.py
 ```
+
+The example reads a synthetic QUICK-style output, extracts the converged
+Hartree-Fock energy and the embedding point charges, writes the file back in the
+format `sander` reads, and verifies that the energies and every gradient
+component survive the round trip. No account, no hardware, no AMBER.
+
+## How one MD step runs
+
+One subcommand per stage, so each can be run and inspected on its own. The
+device is a parameter of every stage that can reach hardware; there is no
+default, and no subcommand accepts a credential.
+
+```bash
+quantum-aimd session open  --backend NAME        # once per trajectory
+quantum-aimd active-space                        # QUICK output -> FCIDUMP
+quantum-aimd layout       --backend NAME         # once per system and device
+quantum-aimd sample       --backend NAME --step N  # execute the circuit
+quantum-aimd solve                  --step N     # energy and gradient
+quantum-aimd session close                       # once per trajectory
+```
+
+Settings live in a YAML file rather than in the source, which is what makes a
+run reproducible and what lets the same code target another device:
+
+```bash
+quantum-aimd solve --config configs/examples/run.yaml --step 17
+```
+
+Passing `--step` keeps the per-batch artifacts of each frame distinct instead of
+each step overwriting the last.
 
 ## Running on IBM Quantum
 

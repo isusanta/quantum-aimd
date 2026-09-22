@@ -33,10 +33,14 @@ license-files = ["LICENSE", "NOTICE"]
 # combination has ever been exercised and declaring one would claim untested
 # compatibility. CI proves only what CI runs.
 #
-# Deliberately NOT declared yet: jax/jaxlib and rustworkx arrive transitively
-# today, and ray is optional. md_qc source imports jax, rustworkx and ray
-# directly, so each must be promoted to a direct dependency at the moment the
-# importing module is migrated - not before.
+# jax and rustworkx were promoted to direct dependencies on 2026-09-21, when the
+# modules that import them landed: quantum_aimd.sqd.solver imports jax for the
+# gradient machinery, and quantum_aimd.circuits.layout imports rustworkx for the
+# heavy-hex coupling graph. Both had arrived transitively before that, which is
+# exactly the situation a direct import should not rely on.
+#
+# ray stays optional, under the hpc extra: quantum_aimd.sqd.driver parallelizes
+# the batches with it when present and runs them in sequence when not.
 dependencies = [
     "numpy>=1.26",
     "scipy>=1.13.1",
@@ -45,6 +49,8 @@ dependencies = [
     "qiskit-ibm-runtime>=0.37",
     "qiskit-addon-sqd>=0.9.0",
     "ffsim>=0.0.49",
+    "jax>=0.4.35",
+    "rustworkx>=0.15",
     "pyyaml>=6.0",
 ]
 
@@ -74,3 +80,45 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.ruff.format]
+# The formatter is excluded from the two modules moved verbatim, for the same
+# reason the linter is relaxed there: reformatting would rewrite every line of a
+# solver and a layout search, and the value of keeping them diffable against the
+# code that produced the published results outweighs uniform style.
+exclude = [
+    "src/quantum_aimd/circuits/layout.py",
+    "src/quantum_aimd/sqd/solver.py",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# These two modules were moved from the original pipeline with their logic
+# untouched, so that the code which produced the published results stays
+# diffable against its source. Their style is the original's: unused imports and
+# locals left from interactive development, legacy typing, a bare except. Lint is
+# therefore relaxed here rather than the code reshaped, because a silent change
+# to a solver or a layout search is a far worse outcome than an unused import.
+# Cleaning them up is tracked in CHANGELOG.md as a separate, reviewable change.
+"src/quantum_aimd/circuits/layout.py" = [
+    "E722",    # bare except, in the original
+    "F401",    # imports the original left behind
+    "F404",    # late __future__ import
+    "F841",    # locals the original assigns but does not use
+    "I001",    # import block not sorted
+    "RUF059",  # unused unpacked variable
+    "UP031",   # printf-style formatting
+    "UP035",   # deprecated typing import
+    "UP037",   # quoted annotation
+]
+"src/quantum_aimd/sqd/solver.py" = [
+    "BLE001",
+    "E722",
+    "F401",
+    "F404",
+    "F841",
+    "I001",
+    "RUF059",
+    "UP031",
+    "UP035",
+    "UP037",
+]
