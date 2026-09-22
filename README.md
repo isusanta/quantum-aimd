@@ -3,6 +3,11 @@
 Quantum-centric ab initio molecular dynamics driven by sample-based quantum
 diagonalization (SQD).
 
+**Paper** — Das, S.; Bhowmik, S.; Li, Z.; Bazayeva, M.; Kaliakin, D.; Shajan, A.;
+Merz, K. M., Jr. *Quantum Computing Enabled ab initio Molecular Dynamics
+Simulations*. [arXiv:2607.28548](https://arxiv.org/abs/2607.28548) (2026).
+Under review; this link will be replaced by the journal reference once it appears.
+
 > **Status: pre-release (v0.1.0).** The public API is not stable. This
 > repository is under active preparation and has not yet been released.
 
@@ -34,6 +39,33 @@ modified QUICK output  ->  SANDER  (next MD step)
 
 Target systems: H2O, NH3, CH4 in vacuum and aqueous QM/MM, benchmarked against
 full-basis FCI references.
+
+## Repository layout
+
+| Path | Contents |
+|---|---|
+| [`src/quantum_aimd/`](src/quantum_aimd/) | The package: one subpackage per stage of an MD step |
+| [`tests/`](tests/) | Offline test suite; runs with no account and no scientific stack |
+| [`examples/minimal/`](examples/minimal/) | Round trip through the QUICK file exchange, no hardware needed |
+| [`configs/examples/`](configs/examples/) | Annotated `run.yaml` showing every setting and its default |
+| [`docs/`](docs/) | IBM Quantum setup, and the environment the published runs used |
+| [`tools/`](tools/) | Repository checks: history secret scan, large-file guard |
+
+### Source files
+
+| File | Role |
+|---|---|
+| [`config.py`](src/quantum_aimd/config.py) | `RunConfig`: every setting of a run in one frozen object, loaded from YAML. No default device |
+| [`io/quick.py`](src/quantum_aimd/io/quick.py) | Reads and writes the files exchanged with QUICK and `sander`: point charges, SCF energy, energy and gradient write-back |
+| [`chemistry/active_space.py`](src/quantum_aimd/chemistry/active_space.py) | Rebuilds the embedded Hartree-Fock reference, projects onto the active space, writes the FCIDUMP |
+| [`circuits/lucj.py`](src/quantum_aimd/circuits/lucj.py) | Builds the LUCJ circuit from CCSD amplitudes and transpiles it to the device |
+| [`circuits/layout.py`](src/quantum_aimd/circuits/layout.py) | Zigzag physical-qubit layout on a heavy-hex lattice, selected for noise |
+| [`runtime/service.py`](src/quantum_aimd/runtime/service.py) | Resolves the locally saved Qiskit account. Accepts no credential, by construction |
+| [`runtime/session.py`](src/quantum_aimd/runtime/session.py) | Session lifecycle: one session per trajectory, not per step |
+| [`runtime/sampler.py`](src/quantum_aimd/runtime/sampler.py) | Executes the circuit with dynamical decoupling and gate twirling; returns counts |
+| [`sqd/solver.py`](src/quantum_aimd/sqd/solver.py) | Diagonalizes in the recovered subspace and evaluates the analytical nuclear gradient |
+| [`sqd/driver.py`](src/quantum_aimd/sqd/driver.py) | The S-CORE loop: configuration recovery, batching, and the energy and gradient of one MD step |
+| [`cli.py`](src/quantum_aimd/cli.py) | One subcommand per stage, so each can be run and inspected on its own |
 
 ## Installation
 
@@ -127,6 +159,26 @@ If you use this work, cite the paper:
 The preprint is under review; this reference will be updated to the journal version
 once it appears. [CITATION.cff](CITATION.cff) carries the same record in machine-readable
 form, with the paper as `preferred-citation` and this repository as the software entry.
+
+To cite the software itself:
+
+```bibtex
+@software{quantum-aimd,
+  author  = {Das, Susanta},
+  title   = {{quantum-aimd}: Quantum-Centric Ab Initio Molecular Dynamics with {SQD}},
+  version = {0.1.0},
+  year    = {2026},
+  url     = {https://github.com/isusanta/quantum-aimd}
+}
+```
+
+Cite the paper, not the software, when referring to the science.
+
+## Contributing
+
+Bug reports, feature requests and pull requests are welcome. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for how to set up an environment that needs
+no account and no hardware, and for what belongs in a report.
 
 ## License
 

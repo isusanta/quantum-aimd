@@ -7,6 +7,13 @@ versioning follows [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Contributor-facing documentation.** `CONTRIBUTING.md`, structured issue
+  forms for bug reports and feature requests, and a pull-request template. Each
+  one states that no credential, instance identifier or HPC account name may
+  appear in a report, since that is the one mistake this project cannot undo for
+  a contributor.
+- **README repository layout and source-file tables**, the paper link at the
+  top, and a BibTeX entry for citing the software itself alongside the paper.
 - **The workflow itself.** The pipeline that produced the published trajectories
   is now part of the package, restructured from scripts into modules: every
   original file executed its work at import time, which made it impossible to
@@ -52,6 +59,10 @@ versioning follows [Semantic Versioning](https://semver.org/).
   merely describable as portable.
 
 ### Changed
+- `NOTICE` names the copyright holder, Susanta Das, and lists the one
+  IBM-derived file with what was changed in it, as Apache-2.0 Section 4(b)
+  requires. Both were unresolved placeholders, which a public repository cannot
+  carry in a legal file.
 - `jax` and `rustworkx` promoted to direct dependencies, now that the modules
   importing them have landed. `ray` stays optional under the `hpc` extra: the
   driver parallelizes batches with it when present and runs them in sequence when

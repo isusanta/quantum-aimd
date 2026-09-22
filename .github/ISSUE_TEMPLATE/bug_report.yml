@@ -1,0 +1,86 @@
+name: Bug report
+description: Report a problem with quantum-aimd
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill in as much of this form as applies. The stage, the versions
+        and the error output are usually enough to reproduce a problem.
+
+        **Do not paste an IBM Quantum API token, an instance identifier or an
+        HPC account name into this form.** Redact them before submitting.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What went wrong
+      placeholder: "Describe the behaviour you saw and the behaviour you expected."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Which stage
+      description: The subcommand that failed.
+      options:
+        - session open / close
+        - active-space
+        - layout
+        - sample
+        - solve
+        - installation or import
+        - examples / tests
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Reproducibility tier
+      description: See the table in the README.
+      options:
+        - "1 - offline smoke test, no account"
+        - "2 - published analysis from the data bundle"
+        - "3 - full QPU/HPC workflow"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The exact commands, and the configuration file with credentials removed.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Error output
+      description: The traceback or log, redacted.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Output of `python -V`, `pip show quantum-aimd qiskit qiskit-ibm-runtime qiskit-addon-sqd ffsim pyscf | grep -E 'Name|Version'`,
+        and your operating system. For a tier-3 report, add the QUICK and AMBER versions.
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: backend
+    attributes:
+      label: Device family
+      description: The processor family only, such as Heron r2 or Eagle r3. Do not give the instance.
+      placeholder: "Heron r2"

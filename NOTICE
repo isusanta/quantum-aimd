@@ -1,6 +1,5 @@
 quantum-aimd
-Copyright 2026 <TODO: CONFIRM COPYRIGHT HOLDER - individual, Cleveland Clinic,
-or MIQuLab. See plan.md Phase 1 before publishing.>
+Copyright 2026 Susanta Das
 
 This product includes software developed at Cleveland Clinic
 (Computational Life Sciences).
@@ -20,9 +19,21 @@ Section 4(b) requires that modified files carry prominent notices stating that
 they were changed. Each affected source file must retain its original copyright
 header and add a modification notice.
 
-  <TODO: list each IBM-derived file here as it is migrated from md_qc, e.g.
-   src/quantum_aimd/sqd/solver.py - derived from <upstream file>, modified to
-   <describe change>.>
+  src/quantum_aimd/sqd/solver.py
+      Derived from Qiskit's qiskit-addon-sqd (Apache-2.0, (C) Copyright IBM
+      2024). The file retains that project's copyright header and builds on
+      `qiskit_addon_sqd.fermion`. Modified for this project to diagonalize
+      inside a fixed determinant subspace supplied by configuration recovery,
+      and to evaluate the analytical nuclear gradient on the final
+      configuration-recovery iteration only.
+
+      The `kernel` function in this file is additionally derived from PySCF's
+      `pyscf.mcscf.casci.kernel` (Apache-2.0, (C) Copyright the PySCF
+      developers), modified to solve through `fci.selected_ci.kernel_fixed_space`
+      and to accept the subspace batch and the Davidson cycle limit as
+      arguments.
+
+  No other file in this repository is derived from an IBM or PySCF source.
 
 ------------------------------------------------------------------------------
 EXTERNAL DEPENDENCIES NOT DISTRIBUTED HERE

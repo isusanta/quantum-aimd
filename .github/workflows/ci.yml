@@ -1,5 +1,4 @@
-# Named exactly "CI" so the MIQuLab branch ruleset can require this check by
-# name, matching the convention used on MIQuLab/ewf-geom-opt.
+# Named exactly "CI" so a branch ruleset can require this check by name.
 name: CI
 
 on:

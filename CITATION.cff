@@ -7,10 +7,9 @@ abstract: "Ab initio molecular dynamics driven by sample-based quantum
   Hamiltonians, LUCJ circuits executed on IBM Quantum hardware, and S-CORE
   selected-CI energies and gradients."
 
-# TODO before first release - do not publish with placeholders:
-#   - confirm full author list and order with the group
+# Open before the first tagged release:
+#   - confirm the software author list and order with the group
 #   - add ORCIDs only where the author has approved publishing theirs
-#   - replace repository-code with the final URL if transferred to MIQuLab
 # preferred-citation added 2026-09-21 from the arXiv record, verified against the
 # arXiv API and DataCite. Update it to the journal version once that exists.
 authors:
