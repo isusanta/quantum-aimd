@@ -150,29 +150,44 @@ by this repository. Obtain them independently.
 
 ## Citation
 
-If you use this work, cite the paper:
+If you use `quantum-aimd` in your research, please cite the appropriate references.
 
-> Das, S.; Bhowmik, S.; Li, Z.; Bazayeva, M.; Kaliakin, D.; Shajan, A.; Merz, K. M., Jr.
-> Quantum Computing Enabled *ab initio* Molecular Dynamics Simulations.
-> arXiv:2607.28548 (2026). <https://arxiv.org/abs/2607.28548>
+### Paper citation
+
+Cite the paper when referring to the science. This is the reference that matters
+for almost every use.
+
+```bibtex
+@misc{das2026quantumaimd,
+  author       = {Das, Susanta and Bhowmik, Subhamoy and Li, Zhen and
+                  Bazayeva, Milana and Kaliakin, Danil and Shajan, Akhil and
+                  Merz, Jr., Kenneth M.},
+  title        = {{Quantum Computing Enabled ab initio Molecular Dynamics Simulations}},
+  year         = {2026},
+  eprint       = {2607.28548},
+  archivePrefix = {arXiv},
+  doi          = {10.48550/arXiv.2607.28548},
+  url          = {https://arxiv.org/abs/2607.28548}
+}
+```
 
 The preprint is under review; this reference will be updated to the journal version
 once it appears. [CITATION.cff](CITATION.cff) carries the same record in machine-readable
 form, with the paper as `preferred-citation` and this repository as the software entry.
 
-To cite the software itself:
+### Software citation
 
 ```bibtex
 @software{quantum-aimd,
-  author  = {Das, Susanta},
+  author  = {Das, Susanta and Bhowmik, Subhamoy and Li, Zhen and
+             Bazayeva, Milana and Kaliakin, Danil and Shajan, Akhil and
+             Merz, Jr., Kenneth M.},
   title   = {{quantum-aimd}: Quantum-Centric Ab Initio Molecular Dynamics with {SQD}},
   version = {0.1.0},
   year    = {2026},
   url     = {https://github.com/isusanta/quantum-aimd}
 }
 ```
-
-Cite the paper, not the software, when referring to the science.
 
 ## Contributing
 

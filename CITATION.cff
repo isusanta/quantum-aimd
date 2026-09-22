@@ -7,19 +7,34 @@ abstract: "Ab initio molecular dynamics driven by sample-based quantum
   Hamiltonians, LUCJ circuits executed on IBM Quantum hardware, and S-CORE
   selected-CI energies and gradients."
 
+# The software author list and order follow the paper, confirmed 2026-09-22.
 # Open before the first tagged release:
-#   - confirm the software author list and order with the group
 #   - add ORCIDs only where the author has approved publishing theirs
 # preferred-citation added 2026-09-21 from the arXiv record, verified against the
 # arXiv API and DataCite. Update it to the journal version once that exists.
 authors:
   - family-names: Das
     given-names: Susanta
-    affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44195, United States"
-  # - family-names: Merz
-  #   given-names: Kenneth M.
-  #   name-suffix: Jr.
-  #   affiliation: "Computational Life Sciences, Cleveland Clinic Research, Cleveland, Ohio 44195, United States"
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
+  - family-names: Bhowmik
+    given-names: Subhamoy
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
+  - family-names: Li
+    given-names: Zhen
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
+  - family-names: Bazayeva
+    given-names: Milana
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
+  - family-names: Kaliakin
+    given-names: Danil
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
+  - family-names: Shajan
+    given-names: Akhil
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
+  - family-names: Merz
+    given-names: Kenneth M.
+    name-suffix: Jr.
+    affiliation: "Computational Life Sciences, The Cleveland Clinic Research, The Cleveland Clinic, Cleveland, Ohio 44195, USA"
 
 repository-code: "https://github.com/isusanta/quantum-aimd"
 license: Apache-2.0
