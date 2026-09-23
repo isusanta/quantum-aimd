@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quantum-aimd"
-version = "0.1.0"
+version = "0.1.1"
 description = "Quantum-centric ab initio molecular dynamics with sample-based quantum diagonalization"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -62,12 +62,8 @@ dev = ["pytest>=7", "pytest-cov", "ruff", "mypy"]
 quantum-aimd = "quantum_aimd.cli:main"
 
 [project.urls]
-# Decided 2026-09-21: the repository lives under the personal account, private
-# first and public once the workflow is migrated. These URLs are therefore
-# already final and the manuscript cites them. If the project is ever moved to
-# an organisation, update these three and CITATION.cff:repository-code in the
-# same commit as the move: i-qmapper still points at its pre-transfer owner
-# because that step was missed there.
+# The manuscript cites these URLs. If the repository ever moves, update these
+# three and CITATION.cff:repository-code in the same commit as the move.
 Homepage = "https://github.com/isusanta/quantum-aimd"
 Issues = "https://github.com/isusanta/quantum-aimd/issues"
 Changelog = "https://github.com/isusanta/quantum-aimd/blob/main/CHANGELOG.md"

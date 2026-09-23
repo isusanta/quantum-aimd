@@ -8,7 +8,7 @@ Merz, K. M., Jr. *Quantum Computing Enabled ab initio Molecular Dynamics
 Simulations*. [arXiv:2607.28548](https://arxiv.org/abs/2607.28548) (2026).
 Under review; this link will be replaced by the journal reference once it appears.
 
-> **Status: v0.1.0, first public release.** This is the workflow that produced
+> **Status: version 0.1, first public release.** This is the workflow that produced
 > the trajectories in the accompanying paper. The Python interfaces may still
 > change between minor versions while the version number starts with 0.
 
@@ -131,7 +131,7 @@ Three tiers, honestly labelled:
 | Tier | What | Needs |
 |---|---|---|
 | 1 | Offline smoke test | nothing — runs in CI |
-| 2 | Published analysis | processed data bundle (DOI, see below) |
+| 2 | Published analysis | the processed data behind the paper's figures (not in this repository) |
 | 3 | Full QPU/HPC workflow | AMBER, QUICK, IBM entitlement, HPC |
 
 Hardware measurements are **not** byte-for-byte reproducible. Do not expect CI
@@ -139,10 +139,8 @@ or an unaffiliated user to reproduce Tier 3.
 
 ## Data
 
-Trajectories and processed results are **not** in this repository. They are
-deposited separately with a DOI.
-
-<!-- TODO: add DOI and link once deposited -->
+Trajectories and processed results are **not** in this repository. The
+analyses reported in the paper are summarized in its Supporting Information.
 
 ## External requirements
 

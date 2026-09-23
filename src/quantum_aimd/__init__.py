@@ -9,6 +9,6 @@ subspace diagonalization and analytical gradients).
 Version 0.x: interfaces may change between minor versions; see CHANGELOG.md.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = ["__version__"]

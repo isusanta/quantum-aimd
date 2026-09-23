@@ -1,7 +1,7 @@
 # Environment evidence
 
-Recorded 2026-08-18 from `/Users/dass11/wspace-lri/md_qc/requirements.txt` by
-read-only inspection.
+Recorded 2026-08-18 from the `requirements.txt` of the research environment that
+produced the published trajectories.
 
 **This is evidence, not a compatibility claim.** It documents the one stack the
 published science is known to have run on. It is not a supported matrix, not a

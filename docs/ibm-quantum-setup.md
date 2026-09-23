@@ -75,6 +75,6 @@ Neither is a substitute for keeping the token out of files in the first place.
 
 ## Status
 
-**v0.1.0.** The workflow is in this package. The stages that reach hardware
+**Version 0.1.** The workflow is in this package. The stages that reach hardware
 (`session`, `layout` and `sample`) follow the contract on this page: no credential in the
 repository, and the device chosen by parameter.
