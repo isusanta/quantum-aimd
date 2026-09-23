@@ -37,11 +37,13 @@ def test_cli_help_exits_zero():
     assert "quantum-aimd" in result.stdout
 
 
-def test_cli_advertises_pre_release():
-    """The CLI must not imply the interfaces are stable."""
-    from quantum_aimd.cli import PRE_RELEASE_NOTICE
+def test_cli_states_interfaces_may_change():
+    """While the version starts with 0, the CLI must not imply the interfaces are stable."""
+    from quantum_aimd import __version__
+    from quantum_aimd.cli import VERSION_NOTICE
 
-    assert "PRE-RELEASE" in PRE_RELEASE_NOTICE
+    assert __version__ in VERSION_NOTICE
+    assert "may change" in VERSION_NOTICE
 
 
 def test_cli_exposes_every_migrated_stage():

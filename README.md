@@ -8,8 +8,9 @@ Merz, K. M., Jr. *Quantum Computing Enabled ab initio Molecular Dynamics
 Simulations*. [arXiv:2607.28548](https://arxiv.org/abs/2607.28548) (2026).
 Under review; this link will be replaced by the journal reference once it appears.
 
-> **Status: pre-release (v0.1.0).** The public API is not stable. This
-> repository is under active preparation and has not yet been released.
+> **Status: v0.1.0, first public release.** This is the workflow that produced
+> the trajectories in the accompanying paper. The Python interfaces may still
+> change between minor versions while the version number starts with 0.
 
 ## What this does
 

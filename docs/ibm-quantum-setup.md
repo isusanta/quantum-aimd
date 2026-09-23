@@ -75,6 +75,6 @@ Neither is a substitute for keeping the token out of files in the first place.
 
 ## Status
 
-**Pre-release (v0.1.0).** The scientific workflow is not yet migrated into this package, so
-there is nothing here that submits a job. This page documents the contract the migrated code
-will follow: no credential in the repository, and the device chosen by parameter.
+**v0.1.0.** The workflow is in this package. The stages that reach hardware
+(`session`, `layout` and `sample`) follow the contract on this page: no credential in the
+repository, and the device chosen by parameter.

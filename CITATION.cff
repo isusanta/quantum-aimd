@@ -39,8 +39,9 @@ authors:
 repository-code: "https://github.com/isusanta/quantum-aimd"
 license: Apache-2.0
 version: 0.1.0
-# date-released is intentionally absent: CFF requires a real ISO date and the
-# project has not been released. Add it at the moment of the first tagged release.
+# date-released is the day the repository was made public, alongside the paper's
+# first revision; tag v0.1.0 on that commit.
+date-released: "2026-09-23"
 # Cite the paper, not the software, when referring to the science. Author order
 # and title are taken verbatim from the arXiv record and match the manuscript.
 preferred-citation:

@@ -6,6 +6,17 @@ versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-23
+
+First public release, made alongside the first revision of the paper.
+
+### Changed
+- Status wording in the README, package docstring, CLI help, setup guide,
+  contributing guide and issue form now describes a released version 0.x
+  instead of an unreleased scaffold. The package docstring and the setup guide
+  had still said the workflow was not yet implemented, which stopped being true
+  with the port below.
+
 ### Added
 - **Contributor-facing documentation.** `CONTRIBUTING.md`, structured issue
   forms for bug reports and feature requests, and a pull-request template. Each

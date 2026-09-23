@@ -21,8 +21,8 @@ import sys
 from . import __version__
 from .config import BACKEND_ENV_VAR, RunConfig
 
-PRE_RELEASE_NOTICE = (
-    f"PRE-RELEASE (v{__version__}): the interfaces are not stable. Stages that "
+VERSION_NOTICE = (
+    f"quantum-aimd v{__version__}: interfaces may change between minor versions. Stages that "
     "contact hardware need a Qiskit account you saved yourself, outside this "
     "repository; see docs/ibm-quantum-setup.md."
 )
@@ -146,7 +146,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="quantum-aimd",
         description="Quantum-centric ab initio molecular dynamics with SQD.",
-        epilog=PRE_RELEASE_NOTICE,
+        epilog=VERSION_NOTICE,
     )
     parser.add_argument("--version", action="version", version=f"quantum-aimd {__version__}")
     sub = parser.add_subparsers(dest="command")
@@ -182,7 +182,7 @@ def main(argv: list[str] | None = None) -> int:
     if handler is None:
         # Bare invocation prints help rather than implying work was done.
         parser.print_help()
-        print(f"\n{PRE_RELEASE_NOTICE}", file=sys.stderr)
+        print(f"\n{VERSION_NOTICE}", file=sys.stderr)
         return 0
 
     try:

@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        The package is pre-release and the API is not stable, so proposals that
+        The package is at version 0.x and the API is not stable, so proposals that
         change an interface are welcome rather than unwelcome. Say which part of
         the pipeline the change would touch.
 

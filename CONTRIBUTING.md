@@ -4,7 +4,7 @@ Thanks for your interest in this project. It accompanies a published study of
 ab initio molecular dynamics driven by sample-based quantum diagonalization, and
 it is maintained by [Susanta Das](https://github.com/isusanta) at Cleveland Clinic.
 
-The package is pre-release: the public API is not yet stable, and interfaces may
+The package is at version 0.x: the public API is not yet stable, and interfaces may
 change between versions without a deprecation period.
 
 ## Table of contents
